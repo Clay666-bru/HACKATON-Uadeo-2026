@@ -3,7 +3,9 @@
 Página web para gestionar el uso de laboratorios, materiales y equipos.
 Equipo de desarrollo para Hackatón 2026 LincesCode.
 
-**Versión actual: 2.3.0** · historial de cambios en [CHANGELOG.md](CHANGELOG.md).
+**Versión actual: 2.4.0** · historial de cambios en [CHANGELOG.md](CHANGELOG.md).
+
+📘 **Documentación:** [guía general](docs/DOCUMENTACION.md) · [accesos, cuentas y contraseñas](docs/ACCESOS.md)
 
 ## Estado: Nivel 1 (control de inventario)
 
@@ -11,7 +13,7 @@ Hecho con la base de datos de [`docs/base de datos.sql`](docs/base%20de%20datos.
 
 | Función | Quién la usa |
 |---|---|
-| Inicio de sesión: **Laboratorio** con usuario y contraseña; **Profesor** y **Administrador** solo con su nombre (de consulta) | Todos |
+| Inicio de sesión con usuario y contraseña para los 4 roles (administrador, laboratorio, profesor y alumno) | Todos |
 | Panel con resumen y alertas (stock bajo, caducidad, mantenimiento vencido, equipos no operativos) | Todos |
 | Inventario de materiales y equipos con su estado, búsqueda y filtros | Todos |
 | **Alta, edición y baja** de materiales y equipos; al dar de alta se genera el código y su QR | Laboratorio |
