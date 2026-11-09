@@ -3,7 +3,7 @@
 Página web para gestionar el uso de laboratorios, materiales y equipos.
 Equipo de desarrollo para Hackatón 2026 LincesCode.
 
-**Versión actual: 2.4.0** · historial de cambios en [CHANGELOG.md](CHANGELOG.md).
+**Versión actual: 2.5.0** · historial de cambios en [CHANGELOG.md](CHANGELOG.md).
 
 📘 **Documentación:** [guía general](docs/DOCUMENTACION.md) · [accesos, cuentas y contraseñas](docs/ACCESOS.md)
 
@@ -128,7 +128,7 @@ front/                   Diseño UAdeO «Materia viva» (HTML, CSS y JS sin comp
 | POST | `/api/movimientos/materiales` | Entrada o salida de material 🔒 |
 | POST | `/api/movimientos/equipos` | Entrada o salida de equipo 🔒 |
 
-🔒 = requiere `Authorization: Bearer <token>` de un usuario con rol laboratorio. El front lo envía solo.
+🔒 = requiere `Authorization: Bearer <token>` de laboratorio o coordinación. Todas las consultas (GET) piden sesión de cualquier rol, salvo `/api/health` y la imagen `/api/inventario/qr/:codigo`; el historial `/api/movimientos` solo lo ven laboratorio y coordinación. El front envía el token solo.
 
 ## Nivel 2 (backend listo, front pendiente)
 

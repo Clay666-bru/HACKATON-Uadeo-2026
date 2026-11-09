@@ -1,6 +1,6 @@
 {
   "name": "lab-almacen",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "LabControl UAdeO - inventario con QR, prácticas, alumnos, batas, conducta y reportes",
   "main": "src/server.js",
   "private": true,

@@ -19,10 +19,14 @@ function textoRequerido(v, max, campo) {
 function fecha(v, conHora = false, campo = 'Fecha') {
   const s = texto(v, 25, campo);
   if (!s) return null;
-  const re = conHora ? /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}(:\d{2})?$/ : /^\d{4}-\d{2}-\d{2}$/;
-  if (!re.test(s) || Number.isNaN(new Date(s.slice(0, 10) + 'T00:00:00').getTime())) {
-    throw new HttpError(400, `${campo} inválida: ${s}`);
-  }
+  const re = conHora ? /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?$/ : /^(\d{4})-(\d{2})-(\d{2})$/;
+  const m = s.match(re);
+  if (!m) throw new HttpError(400, `${campo} inválida: ${s}`);
+  // Comprueba que el día exista (new Date convierte 2026-02-31 en 3 de marzo sin avisar)
+  const [a, mes, dia, h = 0, min = 0, seg = 0] = m.slice(1).map((x) => Number(x || 0));
+  const d = new Date(a, mes - 1, dia);
+  const diaValido = a >= 1000 && d.getFullYear() === a && d.getMonth() === mes - 1 && d.getDate() === dia;
+  if (!diaValido || h > 23 || min > 59 || seg > 59) throw new HttpError(400, `${campo} inválida: ${s}`);
   return s.replace('T', ' ');
 }
 

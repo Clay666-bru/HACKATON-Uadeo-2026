@@ -20,7 +20,7 @@ const MOTIVOS = {
 };
 const CONDICIONES = ['BUENA', 'CON_DETALLES', 'DANADO'];
 
-router.get('/motivos', (_req, res) => res.json({ data: { ...MOTIVOS, condiciones: CONDICIONES } }));
+router.get('/motivos', requiereRol(...LAB), (_req, res) => res.json({ data: { ...MOTIVOS, condiciones: CONDICIONES } }));
 
 function validarBase(body, clase) {
   const tipo = String(body.tipo || '').toUpperCase();
@@ -99,8 +99,8 @@ router.post('/equipos', requiereRol(...LAB), async (req, res) => {
   res.status(201).json({ data: { movimiento_id: r.insertId, equipo: estadoEquipo(actual) } });
 });
 
-// Historial combinado de materiales y equipos, más reciente primero
-router.get('/', async (req, res) => {
+// Historial combinado de materiales y equipos, más reciente primero (solo laboratorio y coordinación)
+router.get('/', requiereRol(...LAB), async (req, res) => {
   const limite = Math.min(Math.max(parseInt(req.query.limite, 10) || 100, 1), 500);
   const clase = String(req.query.clase || '').toLowerCase();
   const tipo = String(req.query.tipo || '').toUpperCase();

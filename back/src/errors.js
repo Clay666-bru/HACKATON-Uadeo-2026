@@ -27,6 +27,20 @@ function errorHandler(err, req, res, _next) {
   if (err.code === 'LIMIT_FILE_SIZE') {
     return res.status(413).json({ error: 'El archivo es demasiado grande (fotos: máximo 5 MB; Excel: máximo 2 MB)' });
   }
+  // Otros errores de subida de archivos (campo equivocado, más de un archivo...)
+  if (err.name === 'MulterError') {
+    return res.status(400).json({ error: `No se pudo recibir el archivo (${err.field ? `campo "${err.field}"` : err.code}). Envía un solo archivo en el campo indicado.` });
+  }
+  // Cuerpo de la petición inválido (JSON mal formado, demasiado grande): errores del propio Express
+  if (err.type === 'entity.parse.failed') {
+    return res.status(400).json({ error: 'Los datos enviados no son un JSON válido' });
+  }
+  if (err.type === 'entity.too.large') {
+    return res.status(413).json({ error: 'Los datos enviados son demasiado grandes' });
+  }
+  if (err.expose && err.status >= 400 && err.status < 500) {
+    return res.status(err.status).json({ error: err.message });
+  }
   if (err.code === 'ECONNREFUSED' || err.code === 'ER_BAD_DB_ERROR' || err.code === 'ER_ACCESS_DENIED_ERROR') {
     console.error('[db]', err.code, err.message);
     return res.status(503).json({ error: 'No hay conexión con la base de datos. Revisa que MySQL esté encendido y el archivo .env.' });

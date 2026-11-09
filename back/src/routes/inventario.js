@@ -3,8 +3,12 @@ const QRCode = require('qrcode');
 const db = require('../db');
 const { HttpError } = require('../errors');
 const { estadoMaterial, estadoEquipo } = require('../estado');
+const { requiereSesion } = require('../auth');
 
 const router = express.Router();
+// Consultar el inventario exige sesión. La imagen QR (/qr/:codigo) queda pública porque la
+// cargan etiquetas <img>, que no pueden enviar el token, y solo contiene el código.
+router.use((req, res, next) => (req.path.startsWith('/qr/') ? next() : requiereSesion(req, res, next)));
 
 const COLS_MAT = 'id, codigo, nombre, tipo, unidad, stock, stock_minimo, fecha_caducidad, activo, creado';
 const COLS_EQ = 'id, codigo, nombre, marca, modelo, numero_serie, cantidad, estado, ultimo_mantenimiento, proximo_mantenimiento, activo, creado';

@@ -2,10 +2,12 @@
 
 Sistema web para gestionar el **Laboratorio Biomédico** de la UAdeO: inventario con QR, entradas y salidas, solicitudes de prácticas, vales de material, renta de batas, alumnos y equipos, puntos de buena conducta, semestres y reportes.
 
-- Versión: **2.4.0** (ver [`CHANGELOG.md`](../CHANGELOG.md))
+- Versión: **2.5.0** (ver [`CHANGELOG.md`](../CHANGELOG.md))
 - Repositorio: https://github.com/Clay666-bru/HACKATON-Uadeo-2026
 - Accesos, cuentas y contraseñas: [`docs/ACCESOS.md`](ACCESOS.md)
 - Referencia completa de la API: [`README.md`](../README.md#api)
+- Documento del equipo (Word, con manual del frontend y registro de desarrollo): [`docs/Documentacion_Laboratorio_UAdeO.docx`](Documentacion_Laboratorio_UAdeO.docx)
+- Repositorio original del equipo: https://github.com/AlanGaxiola-git/HACKATON_2026_CVFS
 
 ---
 

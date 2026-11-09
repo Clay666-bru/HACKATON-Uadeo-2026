@@ -33,13 +33,30 @@ Las ramas de trabajo (como `frontend/tema-claro`) se fusionan en `main`. Solo se
 
 ## [Sin publicar]
 
+Aún no hay cambios.
+
+## [2.5.0] · 2026-11-09 · Cambiar contraseña, documentación y revisión completa
+
 ### Agregado
 - **Cambiar contraseña:** botón en el menú lateral (arriba de «Cerrar sesión») para los 4 roles. Pide la contraseña actual y la nueva dos veces; la sesión sigue abierta.
 - Documentación en `docs/DOCUMENTACION.md` (guía general) y `docs/ACCESOS.md` (cuentas y contraseñas).
+- `docs/Documentacion_Laboratorio_UAdeO.docx`: documentación combinada que estaba solo en la rama `frontend/tema-claro`.
+
+### Cambiado
+- **Consultar el inventario exige sesión** (cualquier rol) y el **historial de movimientos** solo lo ven laboratorio y coordinación. Antes cualquiera en la red podía leerlos sin iniciar sesión. La imagen QR (`/api/inventario/qr/:codigo`) sigue pública porque la cargan etiquetas `<img>`.
 
 ### Corregido
 - Escribir mal la contraseña actual al cambiarla respondía `401` y la página cerraba la sesión como si hubiera expirado. Ahora responde `400` con el mensaje.
 - El cambio de contraseña también se bloquea 5 minutos después de 5 intentos fallidos.
+- Las fechas imposibles (por ejemplo `2026-02-31`) se aceptaban: JavaScript las convertía en otra fecha. Ahora se rechazan con `400`, igual que las horas fuera de rango.
+- Un JSON mal formado en una petición respondía `500 Error interno`; ahora responde `400` con un mensaje claro (y `413` si es demasiado grande).
+- Subir un archivo en un campo que no es el esperado respondía `500`; ahora responde `400`.
+
+### Revisión
+- Análisis estático (ESLint) de todo el backend y de cada página con sus scripts: sin errores.
+- Prueba de punta a punta de la API con los 4 roles: 74 comprobaciones correctas (catálogos, alumnos desde Excel, equipos, solicitud y autorización de prácticas, vales con salida y devolución de inventario, fotos, bitácora, batas, puntos de conducta, semestre, reportes, avisos, manuales y cuentas).
+- Las 20 páginas cargan sin errores con cada rol (laboratorio 13, coordinación 16, profesor 10, alumno 7).
+- La rama `frontend/tema-claro` tiene además un rol «Estudiante» anterior al Nivel 2. No se fusiona: `main` ya cubre lo mismo con el rol `alumno` (vales, batas, fotos y avatares) y juntarlos duplicaría roles y pantallas.
 
 ## [2.4.0] · 2026-11-08 · Cámara QR en teléfonos, nueva cuenta y letra más grande
 
