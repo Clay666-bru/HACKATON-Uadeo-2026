@@ -313,7 +313,12 @@ document.addEventListener('DOMContentLoaded', () => {
     salir.className = 'secondary-link logout';
     salir.innerHTML = `${ICONOS.salir} Cerrar sesión`;
     salir.addEventListener('click', () => Sesion.cerrar());
-    perfil.before(salir);
+    const clave = document.createElement('button');
+    clave.type = 'button';
+    clave.className = 'secondary-link';
+    clave.innerHTML = `${ICONOS.llave} Cambiar contraseña`;
+    clave.addEventListener('click', cambiarPassword);
+    perfil.before(clave, salir);
   }
   // Cambio de colores oscuros/claros (tema.js aplica el tema guardado antes de pintar)
   const campanaTopbar = document.querySelector('.topbar a.icon-button');
@@ -364,3 +369,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }).catch(() => {});
   }
 });
+
+// Cambiar la propia contraseña (todos los roles). La sesión sigue abierta después del cambio.
+function cambiarPassword() {
+  const dlg = abrirDialogo(`<form novalidate>
+    <h2>Cambiar contraseña</h2>
+    <p class="muted">Usuario: <strong>${esc(sesion.usuario || sesion.nombre)}</strong>. La nueva debe tener al menos 8 caracteres.</p>
+    <input type="text" name="usuario" autocomplete="username" value="${esc(sesion.usuario || '')}" hidden>
+    <div class="form-grid">
+      <label class="ancho">Contraseña actual<input type="password" name="actual" autocomplete="current-password" required></label>
+      <label class="ancho">Contraseña nueva<input type="password" name="nueva" autocomplete="new-password" minlength="8" maxlength="200" required></label>
+      <label class="ancho">Repite la contraseña nueva<input type="password" name="confirmar" autocomplete="new-password" minlength="8" maxlength="200" required></label>
+    </div>
+    <p class="form-error" role="alert" hidden></p>
+    <div class="modal-acciones"><span class="espacio"></span><button class="button" type="button" data-cerrar>Cancelar</button>
+    <button class="button primary" type="submit">Guardar contraseña</button></div></form>`, 'modal-chico');
+  const f = dlg.querySelector('form');
+  const $err = f.querySelector('.form-error');
+  const error = (m, campo) => { $err.textContent = m; $err.hidden = false; f[campo]?.focus(); };
+  f.actual.focus();
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $err.hidden = true;
+    const { actual, nueva, confirmar } = f;
+    if (!actual.value) return error('Escribe tu contraseña actual.', 'actual');
+    if (nueva.value.length < 8) return error('La contraseña nueva debe tener al menos 8 caracteres.', 'nueva');
+    if (nueva.value === actual.value) return error('La contraseña nueva debe ser distinta de la actual.', 'nueva');
+    if (nueva.value !== confirmar.value) return error('Las contraseñas nuevas no coinciden.', 'confirmar');
+    const boton = f.querySelector('[type=submit]');
+    boton.disabled = true;
+    try {
+      await api('/auth/password', { method: 'POST', body: { actual: actual.value, nueva: nueva.value } });
+      cerrarDialogo(dlg);
+      toast('Contraseña actualizada. Úsala la próxima vez que inicies sesión.');
+    } catch (er) {
+      boton.disabled = false;
+      actual.value = '';
+      error(er.message, 'actual');
+    }
+  });
+}

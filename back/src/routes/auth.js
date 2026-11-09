@@ -55,12 +55,30 @@ router.get('/yo', requiereSesion, async (req, res) => {
   res.json({ data: u });
 });
 
+// Cambiar la propia contraseña. Una contraseña actual incorrecta responde 400 (no 401),
+// porque el front trata el 401 como sesión expirada y cerraría la sesión.
 router.post('/password', requiereSesion, async (req, res) => {
   const actual = String(req.body?.actual || '');
   const nueva = String(req.body?.nueva || '');
+  if (!actual) throw new HttpError(400, 'Escribe tu contraseña actual');
   if (nueva.length < 8) throw new HttpError(400, 'La contraseña nueva debe tener al menos 8 caracteres');
-  const [[u]] = await db.query('SELECT password_hash FROM usuarios WHERE id = ?', [req.usuario.id]);
-  if (!u || !verificarPassword(actual, u.password_hash)) throw new HttpError(401, 'La contraseña actual no es correcta');
+  if (nueva.length > 200) throw new HttpError(400, 'La contraseña nueva es demasiado larga');
+  if (nueva === actual) throw new HttpError(400, 'La contraseña nueva debe ser distinta de la actual');
+
+  const clave = `password:${req.usuario.id}`;
+  const reg = intentos.get(clave);
+  if (reg?.hasta > Date.now()) {
+    const min = Math.ceil((reg.hasta - Date.now()) / 60000);
+    throw new HttpError(429, `Demasiados intentos. Espera ${min} minuto(s).`);
+  }
+  const [[u]] = await db.query('SELECT password_hash FROM usuarios WHERE id = ? AND activo = 1', [req.usuario.id]);
+  if (!u) throw new HttpError(403, 'Tu usuario ya no está activo');
+  if (!verificarPassword(actual, u.password_hash)) {
+    const fallos = (reg?.fallos || 0) + 1;
+    intentos.set(clave, fallos >= MAX_INTENTOS ? { fallos: 0, hasta: Date.now() + BLOQUEO_MS } : { fallos });
+    throw new HttpError(400, 'La contraseña actual no es correcta');
+  }
+  intentos.delete(clave);
   await db.query('UPDATE usuarios SET password_hash = ? WHERE id = ?', [cifrarPassword(nueva), req.usuario.id]);
   res.json({ data: { ok: true } });
 });

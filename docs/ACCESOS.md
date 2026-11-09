@@ -35,7 +35,7 @@ Cómo se entra a LabControl, qué cuentas existen, cómo se crean y cómo se cam
 | `prueba.administrador` | Administrador | Prueba administrador | Cuenta de prueba de coordinación |
 | `prueba.profesor` | Profesor | Prueba profesor | Cuenta de prueba de profesor |
 
-Contraseñas: en `CREDENCIALES.local.md`. Son **cuentas de prueba**: antes de usar el sistema en serio, cambia sus contraseñas (sección 4) o desactívalas.
+Contraseñas: en `CREDENCIALES.local.md`. Son **cuentas de prueba**: antes de usar el sistema en serio, cambia sus contraseñas (menú lateral → **Cambiar contraseña**) o desactívalas.
 
 Ver todas las cuentas desde la base de datos:
 ```bash
@@ -75,7 +75,7 @@ npm run usuario:crear -- jperez profesor "Juan Pérez" Cambia-Esta-123
 ```
 
 **Opción B: desde la página** (con sesión de administrador):
-- *Administración → Usuarios y catálogos* (`escuela.html`): profesores y demás personal.
+- *Administración → Usuarios y catálogos* (`escuela.html`): profesores (y alumnos).
 - *Administración → Laboratoristas* (`laboratoristas.html`): laboratoristas.
 
 ### Alumnos
@@ -95,7 +95,7 @@ Después, el administrador asigna a cada profesor sus **clases** (grupo + materi
 | Laboratorista olvidó su contraseña | Admin → *Laboratoristas* → **Restablecer contraseña**. Se genera una temporal (`Tmp-…`) que se muestra una sola vez |
 | Profesor o alumno olvidó su contraseña | Desde la terminal con `npm run usuario:crear` (solo personal), o con la API `POST /api/escolar/usuarios/:id/password` (admin) |
 | Administrador olvidó su contraseña | Solo desde la terminal: `npm run usuario:crear -- <usuario> administrador "<Nombre>" <nueva>`. La API no permite restablecer a otro administrador |
-| Cambiar la propia contraseña | Por ahora **no hay pantalla**; existe en la API: `POST /api/auth/password` con `{ "actual": "...", "nueva": "..." }` y la sesión iniciada. Mientras tanto, el admin puede usar el script |
+| Cambiar la propia contraseña | **Cualquier rol:** menú lateral → **Cambiar contraseña**. Escribe la actual y la nueva dos veces. La sesión sigue abierta. 5 intentos fallidos lo bloquean 5 minutos. (API: `POST /api/auth/password` con `{ "actual", "nueva" }`) |
 | Desactivar una cuenta | Admin → *Usuarios y catálogos* (o `PATCH /api/escolar/usuarios/:id` con `{ "activo": false }`). Nadie puede desactivarse a sí mismo |
 
 Para alumnos, `npm run usuario:crear` **no sirve** (los alumnos necesitan grupo). Usa la página del administrador o la API.

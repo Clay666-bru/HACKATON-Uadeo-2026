@@ -226,7 +226,8 @@ docs/
 | "Falta la tabla usuarios" al crear usuario | Importa `docs/usuarios.sql` y `docs/nivel2.sql`. |
 | `EADDRINUSE` al arrancar | Ya hay un servidor en el puerto 3000. Ciérralo o cambia `PORT`. |
 | Todos pierden la sesión al reiniciar | Falta `SESSION_SECRET` en `.env`. |
-| "Demasiados intentos" | 5 contraseñas incorrectas: espera 5 minutos (o reinicia el servidor). |
+| "Demasiados intentos" | 5 contraseñas incorrectas (al entrar o al cambiarla): espera 5 minutos (o reinicia el servidor). |
+| Quiero cambiar mi contraseña | Menú lateral → **Cambiar contraseña** (todos los roles). |
 | "Tu rol no tiene permiso" | Esa acción es de otro rol (ver sección 6). |
 | La cámara no abre | Entra por `localhost` o por HTTPS (sección 5). |
 | *STOCK INSUFICIENTE* | La salida pide más de lo que hay. Registra antes una entrada. |

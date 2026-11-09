@@ -33,7 +33,13 @@ Las ramas de trabajo (como `frontend/tema-claro`) se fusionan en `main`. Solo se
 
 ## [Sin publicar]
 
-Aún no hay cambios.
+### Agregado
+- **Cambiar contraseña:** botón en el menú lateral (arriba de «Cerrar sesión») para los 4 roles. Pide la contraseña actual y la nueva dos veces; la sesión sigue abierta.
+- Documentación en `docs/DOCUMENTACION.md` (guía general) y `docs/ACCESOS.md` (cuentas y contraseñas).
+
+### Corregido
+- Escribir mal la contraseña actual al cambiarla respondía `401` y la página cerraba la sesión como si hubiera expirado. Ahora responde `400` con el mensaje.
+- El cambio de contraseña también se bloquea 5 minutos después de 5 intentos fallidos.
 
 ## [2.4.0] · 2026-11-08 · Cámara QR en teléfonos, nueva cuenta y letra más grande
 
