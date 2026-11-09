@@ -1,0 +1,26 @@
+/* Botón de cambio de tema (sol/luna). Muestra el sol en oscuro y la luna en claro. */
+.tema-toggle { padding: 0; background: none; border-top: 0; border-right: 0; border-bottom: 0; cursor: pointer; }
+.tema-toggle:hover { color: var(--red-light); }
+.tema-toggle .tema-luna { display: none; }
+:root[data-theme="light"] .tema-toggle .tema-sol { display: none; }
+:root[data-theme="light"] .tema-toggle .tema-luna { display: block; }
+
+/* En el inicio de sesión flota en la esquina superior derecha */
+.tema-flotante {
+  position: fixed; top: 16px; right: 16px; z-index: 30;
+  display: grid; place-items: center;
+  width: 44px; height: 44px; padding: 0;
+  border: 1px solid var(--line); border-radius: 50%;
+  background: var(--glass); color: var(--muted);
+  box-shadow: var(--glass-light), var(--shadow);
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.tema-flotante:hover { color: var(--red-light); border-color: var(--line-light); }
+.tema-flotante svg { width: 19px; height: 19px; }
+.tema-flotante .tema-luna { display: none; }
+:root[data-theme="light"] .tema-flotante .tema-sol { display: none; }
+:root[data-theme="light"] .tema-flotante .tema-luna { display: block; }
+
+/* En teléfono, la tarjeta de inicio de sesión baja para no quedar bajo el botón */
+@media (max-width: 700px) { .login-body { padding-top: 72px; } }

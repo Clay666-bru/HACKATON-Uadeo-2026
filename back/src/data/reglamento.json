@@ -1,0 +1,66 @@
+{
+  "titulo": "Reglamento del laboratorio escolar",
+  "programa": "Programa Educativo en Ciencias Biomédicas",
+  "archivo": "/api/practicas/reglamento/archivo",
+  "secciones": [
+    {
+      "titulo": "Acceso al laboratorio",
+      "puntos": [
+        "El laboratorio estará disponible en horario escolar de 7:00 a.m. a 8:00 p.m., sujeto a modificaciones determinadas por las autoridades escolares.",
+        "La gestión de la disponibilidad del laboratorio se realizará únicamente con los encargados; no con personal de servicio social ni pasantes de estancia.",
+        "Para agendar prácticas de laboratorio será necesaria la autorización previa del departamento de coordinación, con al menos una semana de anticipación.",
+        "El acceso al laboratorio está estrictamente controlado; no se permitirá la entrada a personas ajenas o sin autorización.",
+        "Ningún alumno podrá ingresar al laboratorio sin la presencia del docente responsable.",
+        "El docente deberá otorgar la práctica impresa o en digital a los estudiantes previo a la sesión práctica.",
+        "Al ingresar al laboratorio, el docente deberá registrarse en la bitácora de ingreso, mientras que los estudiantes deberán anotarse en la lista de asistencia del laboratorio.",
+        "Al finalizar cada práctica, los estudiantes deberán recoger su material, limpiar su espacio y desechar los residuos conforme a las indicaciones establecidas por el docente; posteriormente, el docente verificará que las áreas de trabajo queden en condiciones adecuadas y entregará el vale de limpieza firmado.",
+        "Si un reactivo preparado se reutiliza en prácticas posteriores, el docente deberá desecharlo al final del semestre o informar a los encargados su contenido para su correcta disposición.",
+        "Las prácticas extraordinarias podrán agendarse únicamente con la aprobación del departamento de coordinación y según la disponibilidad del laboratorio."
+      ]
+    },
+    {
+      "titulo": "Normas de conducta",
+      "puntos": [
+        "Mantener en todo momento una actitud respetuosa y adecuada.",
+        "No se permite el ingreso con el cabello suelto, gorras o lentes oscuros.",
+        "Está prohibido introducir alimentos al laboratorio.",
+        "Dentro del laboratorio está prohibido comer, beber, mascar chicle o fumar.",
+        "No se permite el uso de dispositivos electrónicos ajenos a la práctica (celulares, audífonos, etc.), salvo autorización expresa del docente."
+      ]
+    },
+    {
+      "titulo": "Uso de equipo y materiales",
+      "puntos": [
+        "Todo material, equipo o reactivo deberá solicitarse con anticipación mediante un vale de material, con una semana de anticipación.",
+        "Todos los reactivos preparados o materiales utilizados durante las prácticas deberán estar correctamente etiquetados (contenido de la solución, nombre, grupo, docente responsable, fecha).",
+        "El uso de materiales, equipos y reactivos se permitirá únicamente bajo la supervisión del docente. Los laboratoristas no fungirán como encargados de la práctica.",
+        "Queda estrictamente prohibido manipular instrumentos, sustancias o aparatos sin la debida autorización y supervisión del docente.",
+        "Previo a su uso, se deberán llenar las bitácoras correspondientes de cada equipo. Posteriormente, el equipo deberá tratarse con cuidado y devolverse limpio y en buen estado."
+      ]
+    },
+    {
+      "titulo": "Normas de seguridad",
+      "puntos": [
+        "El uso de bata es estrictamente obligatorio; en caso de no portarla, se negará el acceso a la práctica. Adicionalmente, se negará el acceso a estudiantes que no porten uniforme (lunes a jueves) o ropa adecuada (viernes), incluyendo calzado cerrado.",
+        "El uso de guantes, lentes de seguridad u otro equipo de protección será obligatorio cuando lo indique el docente.",
+        "Está prohibido correr, jugar o realizar bromas dentro del laboratorio.",
+        "En caso de accidente, derrame o desperfecto en el equipo, se deberá informar de inmediato al docente o encargado, quien notificará al responsable del laboratorio.",
+        "Todos los usuarios deben conocer la ubicación de las salidas de emergencia, extintores y botiquín de primeros auxilios.",
+        "Ante cualquier evento que pueda comprometer la integridad física, se deberá contactar de inmediato a las autoridades correspondientes y al departamento médico."
+      ]
+    },
+    {
+      "titulo": "Higiene y orden",
+      "puntos": [
+        "El área de trabajo debe permanecer limpia y ordenada en todo momento.",
+        "Al finalizar la práctica, cada estudiante deberá recoger su material, limpiar su espacio y desechar los residuos conforme a las indicaciones establecidas."
+      ]
+    },
+    {
+      "titulo": "Sanciones",
+      "puntos": [
+        "El incumplimiento de este reglamento podrá derivar en: suspensión temporal del acceso al laboratorio; acta de incidencia a la coordinación; resarcimiento de daños en caso de desperfectos ocasionados por mal uso."
+      ]
+    }
+  ]
+}

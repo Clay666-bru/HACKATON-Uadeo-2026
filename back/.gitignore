@@ -1,0 +1,6 @@
+node_modules/
+.env
+usuario-prueba.txt
+uploads/
+alumnos-prueba-credenciales.csv
+certs/

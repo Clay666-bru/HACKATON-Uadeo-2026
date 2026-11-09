@@ -1,0 +1,145 @@
+/*
+ * MATERIA VIVA · VERSIÓN CLARA
+ * Se activa con <html data-theme="light"> (botón de sol/luna, assets/js/tema.js).
+ * Misma identidad que el modo oscuro: rojo y coral, vidrio esmerilado y la pieza
+ * orgánica, sobre un fondo marfil cálido. Los acentos se oscurecen para que el
+ * texto mantenga contraste AA sobre fondo claro.
+ */
+
+/* 01. Tokens ---------------------------------------------------------------- */
+:root[data-theme="light"] {
+  /* "only light" evita que navegadores con modo oscuro forzado (Opera GX, Chrome) inviertan la versión clara */
+  color-scheme: only light;
+  --canvas: #f7f0ea;
+  --canvas-deep: #efe5dd;
+  --glass: rgba(255, 252, 249, .74);
+  --glass-soft: rgba(255, 250, 246, .62);
+  --glass-raised: rgba(255, 255, 255, .92);
+  --solid: #fffaf6;
+  --line: rgba(84, 36, 40, .13);
+  --line-light: rgba(84, 36, 40, .24);
+  --text: #2a171b;
+  --muted: #6a5459;
+  --subtle: #735e63;
+  --red: #c62f29;
+  --red-dark: #a3231f;
+  --red-light: #ad2b25;
+  --coral: #b5432a;
+  --cyan: #1b6b65;
+  --amber: #85590a;
+  --mint-bg: #dcefec;
+  --amber-bg: #f7ead0;
+  --orange-bg: #fbe2dc;
+  --shadow: 0 18px 48px rgba(110, 50, 45, .12);
+  --glass-light: inset 0 1px 0 rgba(255, 255, 255, .95), inset 1px 0 0 rgba(255, 255, 255, .55);
+}
+
+/* 02. Fondo, selección y enfoque -------------------------------------------- */
+:root[data-theme="light"] body::before { background: radial-gradient(ellipse, rgba(240, 92, 80, .22), transparent 69%); }
+:root[data-theme="light"] body::after { background: radial-gradient(ellipse, rgba(255, 150, 120, .16), transparent 70%); }
+:root[data-theme="light"] ::selection { color: #fff; background: var(--red); }
+:root[data-theme="light"] .skip { color: #fff; background: var(--cyan); }
+
+/* 03. Navegación ------------------------------------------------------------- */
+:root[data-theme="light"] .sidebar { background: rgba(255, 251, 248, .9); }
+:root[data-theme="light"] .university-logo { border-color: var(--line); box-shadow: 0 4px 14px rgba(110, 50, 45, .1); }
+:root[data-theme="light"] .workspace { background: rgba(255, 255, 255, .55); }
+:root[data-theme="light"] .workspace-icon { background: var(--orange-bg); color: var(--red-light); }
+:root[data-theme="light"] .live-dot { box-shadow: 0 0 0 3px rgba(27, 107, 101, .15); }
+:root[data-theme="light"] .sidebar nav a:hover { background: rgba(173, 43, 37, .06); }
+:root[data-theme="light"] .sidebar nav a[aria-current] { background: linear-gradient(110deg, rgba(229, 72, 62, .14), rgba(229, 72, 62, .04)); color: #8f211c; border-color: rgba(198, 47, 41, .28); box-shadow: inset 0 1px rgba(255, 255, 255, .8); }
+:root[data-theme="light"] .avatar { background: linear-gradient(140deg, #f7d9d0, #edc6bc); color: #6e2620; border-color: rgba(173, 43, 37, .2); }
+
+/* 04. Botones ---------------------------------------------------------------- */
+:root[data-theme="light"] .button { background: rgba(255, 255, 255, .72); }
+:root[data-theme="light"] .button:not(:disabled):hover { background: #fff; border-color: rgba(84, 36, 40, .35); }
+:root[data-theme="light"] .button.primary { color: #fff; background: var(--red); border-color: transparent; box-shadow: 0 6px 20px rgba(198, 47, 41, .22), inset 0 1px rgba(255, 255, 255, .25); }
+:root[data-theme="light"] .button.primary:not(:disabled):hover { background: var(--red-dark); border-color: transparent; }
+:root[data-theme="light"] .button:disabled { background: #efe6e1; color: #6f5c61; border-color: var(--line); }
+:root[data-theme="light"] .button.peligro { color: var(--red-light); border-color: rgba(198, 47, 41, .4); }
+
+/* 05. Pieza orgánica (Vista general) ------------------------------------------ */
+:root[data-theme="light"] .hero { border-color: rgba(198, 47, 41, .2); background: linear-gradient(125deg, rgba(255, 233, 226, .85), rgba(255, 245, 240, .72) 55%, rgba(255, 236, 229, .85)); box-shadow: var(--glass-light), 0 22px 60px rgba(110, 50, 45, .12); }
+:root[data-theme="light"] .hero::before { background: radial-gradient(ellipse, rgba(255, 110, 85, .32), rgba(245, 70, 50, .06) 55%, transparent 70%); }
+:root[data-theme="light"] .hero-label { color: var(--red-light); }
+:root[data-theme="light"] .hero-copy > p { color: var(--muted); }
+:root[data-theme="light"] .art-grid { opacity: .7; background-image: linear-gradient(rgba(173, 43, 37, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(173, 43, 37, .08) 1px, transparent 1px); }
+:root[data-theme="light"] .orbit { border-color: rgba(190, 80, 60, .35); box-shadow: none; }
+:root[data-theme="light"] .orbit-one { border-top-color: rgba(190, 80, 60, .7); }
+:root[data-theme="light"] .orbit-two { border-right-color: rgba(220, 110, 80, .7); }
+:root[data-theme="light"] .orbit-three { border-left-color: rgba(220, 120, 80, .7); }
+:root[data-theme="light"] .nucleus { box-shadow: inset 2px 2px 4px #ffd0adbb, inset -12px -15px 30px #3d0a2766, 12px 28px 50px rgba(110, 30, 30, .25), 0 0 60px rgba(241, 69, 48, .2); }
+:root[data-theme="light"] .art-point { background: #e08a6c; }
+:root[data-theme="light"] .art-caption { background: rgba(255, 246, 241, .82); border-color: rgba(173, 43, 37, .2); color: #8f2f27; }
+:root[data-theme="light"] .art-caption b { color: var(--muted); }
+:root[data-theme="light"] .art-index { color: #a5463a; }
+
+/* 06. Indicadores y paneles ------------------------------------------------------ */
+:root[data-theme="light"] .stat:first-child { background: linear-gradient(135deg, rgba(255, 224, 215, .9), rgba(255, 247, 243, .92)); border-color: rgba(198, 47, 41, .22); }
+:root[data-theme="light"] .stat > div:first-child { color: var(--muted); }
+:root[data-theme="light"] .mini-bars i { background: #ec8a80; }
+:root[data-theme="light"] .mini-bars i:nth-child(3n) { background: #c62f29; }
+:root[data-theme="light"] .segmented i:nth-last-child(-n+2) { background: #ead8d3; }
+:root[data-theme="light"] .stat-link { color: var(--red-light); }
+:root[data-theme="light"] .panel-foot { background: rgba(255, 255, 255, .45); }
+:root[data-theme="light"] .practice > a:hover { background: rgba(198, 47, 41, .08); }
+:root[data-theme="light"] .badge { border-color: rgba(84, 36, 40, .1); }
+:root[data-theme="light"] .alert-card { background: linear-gradient(130deg, rgba(255, 210, 200, .38), transparent 85%), var(--glass); }
+:root[data-theme="light"] .guide { background: radial-gradient(ellipse at 100% 0, rgba(240, 140, 125, .28), transparent 65%), var(--glass); }
+:root[data-theme="light"] .date-tile, :root[data-theme="light"] .material-icon { border-color: rgba(84, 36, 40, .1); }
+
+/* 07. Tablas y filtros --------------------------------------------------------------- */
+:root[data-theme="light"] .table-scroll, :root[data-theme="light"] .calendar-scroll { scrollbar-color: #d9b8b2 transparent; }
+:root[data-theme="light"] th { background: rgba(173, 43, 37, .035); }
+:root[data-theme="light"] td { border-bottom-color: var(--line); }
+:root[data-theme="light"] tbody tr:hover { background: rgba(173, 43, 37, .04); }
+:root[data-theme="light"] .tabs input:checked + label { background: rgba(229, 72, 62, .12); border-color: rgba(198, 47, 41, .3); color: #8f211c; }
+:root[data-theme="light"] dd { color: var(--text); }
+:root[data-theme="light"] .day { background: rgba(173, 43, 37, .03); }
+
+/* 08. Avisos y formularios ------------------------------------------------------------ */
+:root[data-theme="light"] .notice { background: rgba(225, 243, 240, .92); border-color: rgba(27, 107, 101, .22); color: #23423f; }
+:root[data-theme="light"] .notice.warning { background: rgba(251, 240, 217, .95); border-color: rgba(133, 89, 10, .25); color: #5a400b; }
+:root[data-theme="light"] .form-grid label,
+:root[data-theme="light"] .codigo-fila label,
+:root[data-theme="light"] .login-card .campo,
+:root[data-theme="light"] .login-card .roles legend { color: #4a3439; }
+:root[data-theme="light"] input,
+:root[data-theme="light"] select,
+:root[data-theme="light"] textarea { background: #fff; border-color: rgba(84, 36, 40, .26); }
+:root[data-theme="light"] input:hover,
+:root[data-theme="light"] select:hover,
+:root[data-theme="light"] textarea:hover { border-color: rgba(84, 36, 40, .5); }
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder { color: #7a666b; }
+:root[data-theme="light"] input[readonly] { background: #f5ede9; opacity: 1; }
+:root[data-theme="light"] .scan-placeholder { border-color: rgba(198, 47, 41, .35); background: radial-gradient(ellipse at top, rgba(229, 72, 62, .08), transparent 70%); }
+:root[data-theme="light"] .form-error { background: var(--orange-bg); color: #8f211c; }
+
+/* 09. Inicio de sesión, diálogos y avisos ------------------------------------------------ */
+:root[data-theme="light"] .login-card .rol-box { background: rgba(255, 255, 255, .7); }
+:root[data-theme="light"] .login-card .rol input:checked + .rol-box { border-color: rgba(198, 47, 41, .5); background: rgba(229, 72, 62, .08); }
+:root[data-theme="light"] .modal { background: var(--glass-raised); }
+:root[data-theme="light"] .modal::backdrop { background: rgba(70, 30, 30, .3); }
+:root[data-theme="light"] .toast { border-color: rgba(27, 107, 101, .25); }
+:root[data-theme="light"] .ficha-qr,
+:root[data-theme="light"] .articulo-escaneado img { box-shadow: 0 0 0 1px var(--line); }
+:root[data-theme="light"] .etiqueta { box-shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(110, 50, 45, .08); }
+
+/* 10. Respuesta al puntero ----------------------------------------------------------------- */
+@media (hover: hover) {
+  :root[data-theme="light"] .material-card:hover,
+  :root[data-theme="light"] .alert-card:hover,
+  :root[data-theme="light"] .stat:hover { border-color: rgba(198, 47, 41, .3); box-shadow: var(--glass-light), 0 24px 56px rgba(110, 50, 45, .16); }
+  :root[data-theme="light"] .etiqueta:hover { box-shadow: 0 16px 36px rgba(110, 50, 45, .16); }
+  :root[data-theme="light"] tbody tr:hover { background: rgba(173, 43, 37, .04); }
+}
+
+/* 11. Vidrio: el desenfoque se mantiene; en claro el vidrio es marfil ------------------------- */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root[data-theme="light"] .sidebar { background: rgba(255, 251, 248, .78); }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root[data-theme="light"] .hero { background: linear-gradient(125deg, #ffe9e2, #fff5f0); }
+  :root[data-theme="light"] .art-caption { background: #fff6f1; }
+}

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="t">
+  <title id="t">Avatar de Coordinación: matraz con corona y fondo de carnaval</title>
+  <defs>
+    <radialGradient id="fondo" cx="50%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#ff5fa2"/>
+      <stop offset=".55" stop-color="#8a2be2"/>
+      <stop offset="1" stop-color="#2a0f5c"/>
+    </radialGradient>
+    <linearGradient id="liquido" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3ff0d0"/>
+      <stop offset="1" stop-color="#0a9e8f"/>
+    </linearGradient>
+    <linearGradient id="vidrio" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".45"/>
+    </linearGradient>
+    <linearGradient id="oro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4a8"/>
+      <stop offset=".45" stop-color="#ffcc33"/>
+      <stop offset="1" stop-color="#c98a00"/>
+    </linearGradient>
+    <clipPath id="circulo"><circle cx="60" cy="60" r="60"/></clipPath>
+    <!-- Forma interior del matraz: el líquido se recorta con ella -->
+    <clipPath id="matraz"><path d="M52.5 58 L52.5 64 L37 92 Q35 97 40 97 L80 97 Q85 97 83 92 L67.5 64 L67.5 58 Z"/></clipPath>
+    <style>
+      .confeti { animation: caer 3.6s linear infinite; }
+      .c2 { animation-duration: 4.4s; animation-delay: -1.2s; }
+      .c3 { animation-duration: 3.1s; animation-delay: -2.1s; }
+      .c4 { animation-duration: 5s; animation-delay: -.6s; }
+      .c5 { animation-duration: 3.8s; animation-delay: -2.8s; }
+      .c6 { animation-duration: 4.6s; animation-delay: -3.4s; }
+      @keyframes caer { from { transform: translateY(-40px) rotate(0deg); } to { transform: translateY(140px) rotate(320deg); } }
+      .confeti rect, .confeti circle { transform-box: fill-box; transform-origin: center; }
+      .serpentina { stroke-dasharray: 10 6; animation: ondear 2.4s linear infinite; }
+      @keyframes ondear { to { stroke-dashoffset: -32; } }
+      .ola { animation: ola 2.6s linear infinite; }
+      @keyframes ola { from { transform: translateX(0); } to { transform: translateX(-24px); } }
+      .burbuja { transform-box: fill-box; transform-origin: center; animation: subir 2.8s ease-in infinite; opacity: 0; }
+      .b2 { animation-delay: .9s; animation-duration: 3.2s; }
+      .b3 { animation-delay: 1.7s; animation-duration: 2.5s; }
+      .b4 { animation-delay: 2.3s; animation-duration: 3.6s; }
+      @keyframes subir { 0% { transform: translateY(0) scale(.6); opacity: 0; } 15% { opacity: .95; } 85% { opacity: .8; } 100% { transform: translateY(-46px) scale(1.15); opacity: 0; } }
+      .corona { transform-box: fill-box; transform-origin: 50% 100%; animation: corona 3.2s ease-in-out infinite; }
+      @keyframes corona { 0%, 100% { transform: rotate(-6deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-2.5px); } }
+      .brillo { transform-box: fill-box; transform-origin: center; animation: brillo 1.8s ease-in-out infinite; }
+      .s2 { animation-delay: .6s; } .s3 { animation-delay: 1.2s; }
+      @keyframes brillo { 0%, 100% { transform: scale(.2); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }
+      .luz { animation: luz 4s ease-in-out infinite; }
+      @keyframes luz { 0%, 100% { opacity: .35; } 50% { opacity: .7; } }
+      @media (prefers-reduced-motion: reduce) {
+        .confeti, .serpentina, .ola, .burbuja, .corona, .brillo, .luz { animation: none; }
+        .burbuja { opacity: .8; }
+      }
+    </style>
+  </defs>
+
+  <g clip-path="url(#circulo)">
+    <!-- Fondo de carnaval -->
+    <rect width="120" height="120" fill="url(#fondo)"/>
+    <g class="luz">
+      <circle cx="18" cy="22" r="22" fill="#ffd23f" opacity=".25"/>
+      <circle cx="104" cy="98" r="26" fill="#00e5c3" opacity=".22"/>
+    </g>
+    <!-- Serpentinas -->
+    <g fill="none" stroke-width="3.2" stroke-linecap="round">
+      <path class="serpentina" d="M-6 30 C 14 14, 26 46, 46 26 S 74 8, 92 24" stroke="#ffd23f"/>
+      <path class="serpentina" d="M70 -4 C 84 12, 70 26, 90 36 S 120 34, 128 52" stroke="#00e5c3"/>
+      <path class="serpentina" d="M-8 84 C 8 70, 20 96, 34 82" stroke="#ff4d6d"/>
+      <path class="serpentina" d="M92 70 C 104 60, 112 84, 128 74" stroke="#ffd23f"/>
+    </g>
+    <!-- Confeti cayendo -->
+    <g class="confeti"><rect x="14" y="0" width="5" height="3" fill="#ffd23f"/><circle cx="96" cy="8" r="2.2" fill="#ffffff"/></g>
+    <g class="confeti c2"><rect x="30" y="4" width="4" height="4" fill="#00e5c3"/><rect x="84" y="-6" width="5" height="2.6" fill="#ff4d6d"/></g>
+    <g class="confeti c3"><circle cx="22" cy="-10" r="2" fill="#ff4d6d"/><rect x="104" y="2" width="4" height="3" fill="#ffd23f"/></g>
+    <g class="confeti c4"><rect x="8" y="-2" width="3" height="5" fill="#ffffff"/><circle cx="72" cy="-12" r="2.4" fill="#ffd23f"/></g>
+    <g class="confeti c5"><rect x="44" y="-8" width="5" height="3" fill="#ff4d6d"/><circle cx="110" cy="-4" r="1.8" fill="#00e5c3"/></g>
+    <g class="confeti c6"><rect x="58" y="-14" width="3" height="5" fill="#00e5c3"/><circle cx="4" cy="-14" r="2" fill="#ffffff"/></g>
+
+    <!-- Matraz -->
+    <ellipse cx="60" cy="101" rx="27" ry="4" fill="#1a0838" opacity=".45"/>
+    <g clip-path="url(#matraz)">
+      <rect x="30" y="56" width="60" height="45" fill="#ffffff" opacity=".12"/>
+      <g class="ola">
+        <path d="M24 78 q6 -4 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 V100 H24 Z" fill="url(#liquido)"/>
+      </g>
+      <circle class="burbuja" cx="54" cy="94" r="2.6" fill="#e9fffb"/>
+      <circle class="burbuja b2" cx="64" cy="95" r="1.8" fill="#e9fffb"/>
+      <circle class="burbuja b3" cx="59" cy="93" r="2.2" fill="#e9fffb"/>
+      <circle class="burbuja b4" cx="68" cy="92" r="1.5" fill="#e9fffb"/>
+    </g>
+    <path d="M52.5 58 L52.5 64 L37 92 Q35 97 40 97 L80 97 Q85 97 83 92 L67.5 64 L67.5 58" fill="url(#vidrio)" fill-opacity=".35" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+    <rect x="49.5" y="54" width="21" height="5" rx="2" fill="#ffffff" opacity=".95"/>
+    <path d="M43 88 L54 67" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+
+    <!-- Corona -->
+    <g class="corona">
+      <path d="M42 48 L44 30 L52 39 L60 25 L68 39 L76 30 L78 48 Z" fill="url(#oro)" stroke="#8a5a00" stroke-width="1.2" stroke-linejoin="round"/>
+      <rect x="42" y="45" width="36" height="6" rx="2" fill="url(#oro)" stroke="#8a5a00" stroke-width="1.2"/>
+      <circle cx="60" cy="48" r="2.2" fill="#ff4d6d"/>
+      <circle cx="51" cy="48" r="1.6" fill="#00e5c3"/>
+      <circle cx="69" cy="48" r="1.6" fill="#00e5c3"/>
+      <circle cx="44" cy="30" r="1.8" fill="#fff4a8"/>
+      <circle cx="60" cy="25" r="2.2" fill="#fff4a8"/>
+      <circle cx="76" cy="30" r="1.8" fill="#fff4a8"/>
+    </g>
+    <!-- Destellos -->
+    <path class="brillo" d="M86 22 l1.6 4.4 4.4 1.6 -4.4 1.6 -1.6 4.4 -1.6 -4.4 -4.4 -1.6 4.4 -1.6 z" fill="#fff4a8"/>
+    <path class="brillo s2" d="M30 44 l1.2 3.3 3.3 1.2 -3.3 1.2 -1.2 3.3 -1.2 -3.3 -3.3 -1.2 3.3 -1.2 z" fill="#ffffff"/>
+    <path class="brillo s3" d="M92 54 l1 2.8 2.8 1 -2.8 1 -1 2.8 -1 -2.8 -2.8 -1 2.8 -1 z" fill="#ffd23f"/>
+  </g>
+  <circle cx="60" cy="60" r="58.5" fill="none" stroke="#ffd23f" stroke-width="3"/>
+</svg>
